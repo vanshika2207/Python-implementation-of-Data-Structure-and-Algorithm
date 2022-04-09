@@ -1,22 +1,21 @@
-largest=0
 def heapify(aaray,size,i):
-    i=largest
+    largest=i
     left_child=2*i+1
     right_child=2*i+2
-    if array[left_child]>array[i] and left_child<size:
-        left_child=largest
-    if array[right_child]>array[i] and right_child<size:
-        right_child=largest
+    if  left_child<size and array[i] < array[left_child]:
+        largest=left_child
+    if right_child<size and array[largest] < array[right_child]:
+        largest=right_child
     if largest !=i:
         array[i],array[largest]=array[largest],array[i]
-        heapify(array,n,largest)
+        heapify(array,size,largest)
 def insert(array,newnumber):
     size=len(array)
     if size==0:
         array.append(newnumber)
     else:
         array.append(newnumber)
-        for i in range((size//2)-1,-1,-1):
+        for i in range(size//2-1,-1,-1):
             heapify(array,size,i)
 def delete(array,number):
     size=len(array)
